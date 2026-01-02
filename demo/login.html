@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Xtream UI - Login (Demo)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f1556c;
+            --bg-dark: #323a46;
+            --bg-darker: #36404a;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Nunito', sans-serif;
+        }
+        .authentication-bg-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='rgba(255,255,255,0.05)' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 45px 0 rgba(0,0,0,.12);
+        }
+        .card-body {
+            padding: 30px;
+        }
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f1556c;
+            letter-spacing: 1px;
+        }
+        .auth-title {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-control {
+            border-radius: 5px;
+            padding: 10px 15px;
+            height: auto;
+        }
+        .form-control:focus {
+            border-color: #f1556c;
+            box-shadow: 0 0 0 0.2rem rgba(241,85,108,.25);
+        }
+        .btn-danger {
+            background-color: #f1556c;
+            border-color: #f1556c;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        .btn-danger:hover {
+            background-color: #e63950;
+            border-color: #e63950;
+        }
+        .demo-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            color: #fff;
+            background: rgba(0,0,0,0.9);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="authentication-bg authentication-bg-pattern">
+    <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <div class="demo-badge"><i class="fas fa-info-circle"></i> Demo Preview Only</div>
+    
+    <div class="account-pages mt-5 mb-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="text-center w-75 m-auto">
+                                <span class="logo-text">XTREAM UI</span>
+                                <p class="text-muted mb-4 mt-3"></p>
+                            </div>
+                            <h5 class="auth-title">Admin / Reseller Interface</h5>
+                            <form>
+                                <div class="form-group mb-3">
+                                    <label for="username">Username</label>
+                                    <input class="form-control" type="text" id="username" placeholder="Enter your username">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="password">Password</label>
+                                    <input class="form-control" type="password" id="password" placeholder="Enter your password">
+                                </div>
+                                <div class="form-group mb-0 text-center">
+                                    <button class="btn btn-danger btn-block" type="button" onclick="alert('This is a demo preview. The actual login requires a full Xtream UI installation with database.')">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <p class="text-white-50">This is a static demo preview of the Xtream UI login page design.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

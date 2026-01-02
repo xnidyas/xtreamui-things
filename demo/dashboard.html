@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Xtream UI - Dashboard (Demo)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f1556c;
+            --purple: #675db7;
+            --success: #23b397;
+            --pink: #e36498;
+            --info: #56C3D6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f6f8;
+        }
+        .topbar {
+            background: #fff;
+            height: 70px;
+            box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #f1556c;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0 0 0 40px;
+            padding: 0;
+        }
+        .nav-menu li a {
+            padding: 22px 15px;
+            display: block;
+            color: #6c757d;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .nav-menu li a:hover, .nav-menu li a.active {
+            color: #f1556c;
+        }
+        .main-content {
+            margin-top: 70px;
+            padding: 24px;
+        }
+        .page-title {
+            margin-bottom: 24px;
+        }
+        .page-title h4 {
+            font-size: 18px;
+            margin: 0;
+            color: #343a40;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+        }
+        .stat-card .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .stat-card .icon.purple { background: rgba(103,93,183,.2); color: var(--purple); }
+        .stat-card .icon.success { background: rgba(35,179,151,.2); color: var(--success); }
+        .stat-card .icon.pink { background: rgba(227,100,152,.2); color: var(--pink); }
+        .stat-card .icon.info { background: rgba(86,195,214,.2); color: var(--info); }
+        .stat-card .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #343a40;
+            margin-top: 10px;
+        }
+        .stat-card .label {
+            color: #98a6ad;
+            font-size: 14px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 35px 0 rgba(154,161,171,.15);
+            border: none;
+            margin-bottom: 24px;
+        }
+        .card-header {
+            background: transparent;
+            border-bottom: 1px solid #f1f3fa;
+            padding: 15px 20px;
+            font-weight: 600;
+        }
+        .card-body { padding: 20px; }
+        .demo-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+        .back-link {
+            margin-left: auto;
+            background: #f1556c;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            color: #fff;
+            background: #e63950;
+        }
+        .server-table {
+            width: 100%;
+        }
+        .server-table th, .server-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #f1f3fa;
+        }
+        .server-table th {
+            background: #f9f9fc;
+            font-weight: 600;
+            color: #6c757d;
+            font-size: 13px;
+        }
+        .badge-success { background: var(--success); }
+        .badge-danger { background: #f1556c; }
+        .progress {
+            height: 6px;
+            border-radius: 3px;
+        }
+        .tab-nav {
+            display: flex;
+            border-bottom: 2px solid #e9ecef;
+            margin-bottom: 20px;
+        }
+        .tab-nav a {
+            padding: 10px 20px;
+            color: #6c757d;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+        .tab-nav a.active {
+            color: #f1556c;
+            border-bottom-color: #f1556c;
+        }
+    </style>
+</head>
+<body>
+    <div class="topbar">
+        <span class="logo">XTREAM UI</span>
+        <ul class="nav-menu">
+            <li><a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="#"><i class="fas fa-tv"></i> Streams</a></li>
+            <li><a href="#"><i class="fas fa-film"></i> Movies</a></li>
+            <li><a href="#"><i class="fas fa-server"></i> Servers</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+        <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <div class="main-content">
+        <div class="page-title">
+            <h4>Dashboard</h4>
+        </div>
+
+        <div class="tab-nav">
+            <a href="#" class="active">Overview</a>
+            <a href="#">Main Server</a>
+            <a href="#">Load Balancer 1</a>
+            <a href="#">Load Balancer 2</a>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="d-flex justify-content-between">
+                    <div class="icon purple"><i class="fas fa-bolt"></i></div>
+                    <div class="text-right">
+                        <div class="value">1,247</div>
+                    </div>
+                </div>
+                <div class="label text-right">Open Connections</div>
+            </div>
+            <div class="stat-card">
+                <div class="d-flex justify-content-between">
+                    <div class="icon success"><i class="fas fa-users"></i></div>
+                    <div class="text-right">
+                        <div class="value">892</div>
+                    </div>
+                </div>
+                <div class="label text-right">Online Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="d-flex justify-content-between">
+                    <div class="icon pink"><i class="fas fa-play"></i></div>
+                    <div class="text-right">
+                        <div class="value">156</div>
+                    </div>
+                </div>
+                <div class="label text-right">Online Streams</div>
+            </div>
+            <div class="stat-card">
+                <div class="d-flex justify-content-between">
+                    <div class="icon info"><i class="fas fa-pause"></i></div>
+                    <div class="text-right">
+                        <div class="value">23</div>
+                    </div>
+                </div>
+                <div class="label text-right">Offline Streams</div>
+            </div>
+            <div class="stat-card">
+                <div class="d-flex justify-content-between">
+                    <div class="icon purple"><i class="fas fa-download"></i></div>
+                    <div class="text-right">
+                        <div class="value">542 <small>Mbps</small></div>
+                    </div>
+                </div>
+                <div class="label text-right">Total Input</div>
+            </div>
+            <div class="stat-card">
+                <div class="d-flex justify-content-between">
+                    <div class="icon purple"><i class="fas fa-upload"></i></div>
+                    <div class="text-right">
+                        <div class="value">1.2 <small>Gbps</small></div>
+                    </div>
+                </div>
+                <div class="label text-right">Total Output</div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">Server Status</div>
+                    <div class="card-body p-0">
+                        <table class="server-table">
+                            <thead>
+                                <tr>
+                                    <th>Server</th>
+                                    <th>Status</th>
+                                    <th>CPU</th>
+                                    <th>Memory</th>
+                                    <th>Connections</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Main Server</strong></td>
+                                    <td><span class="badge badge-success">Online</span></td>
+                                    <td>
+                                        <div class="progress"><div class="progress-bar bg-success" style="width: 45%"></div></div>
+                                        <small>45%</small>
+                                    </td>
+                                    <td>
+                                        <div class="progress"><div class="progress-bar bg-info" style="width: 62%"></div></div>
+                                        <small>62%</small>
+                                    </td>
+                                    <td>523</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Load Balancer 1</strong></td>
+                                    <td><span class="badge badge-success">Online</span></td>
+                                    <td>
+                                        <div class="progress"><div class="progress-bar bg-success" style="width: 32%"></div></div>
+                                        <small>32%</small>
+                                    </td>
+                                    <td>
+                                        <div class="progress"><div class="progress-bar bg-info" style="width: 48%"></div></div>
+                                        <small>48%</small>
+                                    </td>
+                                    <td>412</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Load Balancer 2</strong></td>
+                                    <td><span class="badge badge-success">Online</span></td>
+                                    <td>
+                                        <div class="progress"><div class="progress-bar bg-warning" style="width: 67%"></div></div>
+                                        <small>67%</small>
+                                    </td>
+                                    <td>
+                                        <div class="progress"><div class="progress-bar bg-info" style="width: 55%"></div></div>
+                                        <small>55%</small>
+                                    </td>
+                                    <td>312</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Backup Server</strong></td>
+                                    <td><span class="badge badge-danger">Offline</span></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">Quick Stats</div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total Users</span>
+                            <strong>12,456</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Active Subscriptions</span>
+                            <strong>8,234</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Expired Users</span>
+                            <strong>4,222</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total Streams</span>
+                            <strong>2,847</strong>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <span>Total Movies</span>
+                            <strong>15,632</strong>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>Total Series</span>
+                            <strong>1,245</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-badge"><i class="fas fa-info-circle"></i> Demo Preview Only</div>
+</body>
+</html>
