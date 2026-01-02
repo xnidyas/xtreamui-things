@@ -124,8 +124,9 @@ $howToFiles = glob('how-to/*');
             <h1>Xtream UI Tools</h1>
             <p class="subtitle">A collection of modifications, tools, and utilities for Xtream UI</p>
             <div style="margin-top: 20px;">
-                <a href="/demo/login.html" style="display: inline-block; background: #f1556c; color: #fff; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 5px; font-weight: 600;">View Login Demo</a>
-                <a href="/demo/dashboard.html" style="display: inline-block; background: #675db7; color: #fff; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 5px; font-weight: 600;">View Dashboard Demo</a>
+                <a href="/demo/features.html" style="display: inline-block; background: #00d4ff; color: #000; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 5px; font-weight: 600;">View All Features</a>
+                <a href="/demo/login.html" style="display: inline-block; background: #f1556c; color: #fff; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 5px; font-weight: 600;">Login Demo</a>
+                <a href="/demo/dashboard.html" style="display: inline-block; background: #675db7; color: #fff; padding: 12px 24px; border-radius: 6px; text-decoration: none; margin: 5px; font-weight: 600;">Dashboard Demo</a>
             </div>
         </header>
 

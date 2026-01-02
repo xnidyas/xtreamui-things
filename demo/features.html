@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xtream UI Tools - Features & Enhancements</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        .navbar {
+            background: rgba(0,0,0,0.3) !important;
+            padding: 15px 30px;
+        }
+        .navbar-brand {
+            color: #00d4ff !important;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .nav-link { color: #aaa !important; }
+        .nav-link:hover { color: #fff !important; }
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            color: #888;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .container { max-width: 1100px; }
+        .section {
+            padding: 40px 0;
+        }
+        .section-title {
+            color: #00d4ff;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0,212,255,0.3);
+        }
+        .section-title i {
+            margin-right: 10px;
+        }
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0,212,255,0.1);
+            border-color: rgba(0,212,255,0.3);
+        }
+        .feature-card h4 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        .feature-card .badge {
+            margin-bottom: 10px;
+        }
+        .badge-reseller { background: #675db7; }
+        .badge-fix { background: #23b397; }
+        .badge-backup { background: #e36498; }
+        .badge-tool { background: #56C3D6; }
+        .badge-display { background: #f1556c; }
+        .code-block {
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: #7fdbca;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+        .file-list li {
+            padding: 8px 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 5px;
+            margin-bottom: 5px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #7fdbca;
+        }
+        .file-list li i {
+            margin-right: 8px;
+            color: #f1556c;
+        }
+        .install-steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+        .install-steps li {
+            counter-increment: step;
+            padding: 15px 15px 15px 60px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .install-steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: #f1556c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+        }
+        .warning-box {
+            background: rgba(241,85,108,0.1);
+            border: 1px solid rgba(241,85,108,0.3);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .warning-box h5 {
+            color: #f1556c;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 40px;
+            color: #666;
+        }
+        .toc {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+        .toc h5 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+        .toc ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            columns: 2;
+        }
+        .toc ul li {
+            padding: 5px 0;
+        }
+        .toc ul li a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        .toc ul li a:hover {
+            color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="/"><i class="fas fa-cube"></i> Xtream UI Tools</a>
+        <div class="ml-auto">
+            <a href="/" class="nav-link d-inline"><i class="fas fa-home"></i> Home</a>
+            <a href="/demo/login.html" class="nav-link d-inline"><i class="fas fa-sign-in-alt"></i> Login Demo</a>
+            <a href="/demo/dashboard.html" class="nav-link d-inline"><i class="fas fa-tachometer-alt"></i> Dashboard Demo</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1><i class="fas fa-star"></i> Features & Enhancements</h1>
+            <p>Complete documentation of all modifications, bug fixes, and tools included in this repository</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="toc">
+            <h5><i class="fas fa-list"></i> Table of Contents</h5>
+            <ul>
+                <li><a href="#reseller"><i class="fas fa-angle-right"></i> Reseller Improvements</a></li>
+                <li><a href="#bugfixes"><i class="fas fa-angle-right"></i> Bug Fixes</a></li>
+                <li><a href="#backup"><i class="fas fa-angle-right"></i> Backup System</a></li>
+                <li><a href="#crons"><i class="fas fa-angle-right"></i> Cron Tools</a></li>
+                <li><a href="#display"><i class="fas fa-angle-right"></i> Display Improvements</a></li>
+                <li><a href="#security"><i class="fas fa-angle-right"></i> Security Tools</a></li>
+                <li><a href="#nginx"><i class="fas fa-angle-right"></i> Nginx Configs</a></li>
+                <li><a href="#installation"><i class="fas fa-angle-right"></i> Installation Guide</a></li>
+            </ul>
+        </div>
+
+        <!-- Reseller Improvements -->
+        <section class="section" id="reseller">
+            <h2 class="section-title"><i class="fas fa-user-tie"></i> Reseller Improvements</h2>
+            
+            <div class="feature-card">
+                <span class="badge badge-reseller">Reseller</span>
+                <h4>MAG Events for Resellers</h4>
+                <p>Allows resellers to manage MAG device events such as sending messages, rebooting devices, and updating firmware. This functionality is normally restricted to admin users only.</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file-code"></i> modified_php_files/allow-reseller-mag-events/api.php</li>
+                    <li><i class="fas fa-file-code"></i> modified_php_files/allow-reseller-mag-events/mags.php</li>
+                    <li><i class="fas fa-file-code"></i> modified_php_files/allow-reseller-mag-events/settings.php</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-reseller">Reseller</span>
+                <h4>Selectable Bouquets for Resellers</h4>
+                <p>Enables resellers to choose which channel packages (bouquets) to offer their customers, rather than being forced to include all available packages. You can hide bouquets by adding "admin" to the bouquet name.</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file-code"></i> admin-modified/user_reseller-bouquets-selectable.zip</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-reseller">Reseller</span>
+                <h4>MAG to User Conversion</h4>
+                <p>Allows resellers to convert MAG device accounts to regular user accounts. This is a one-way process that deletes the MAG device entry from the database.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-reseller">Reseller</span>
+                <h4>Stream Restart Permission</h4>
+                <p>Gives resellers the ability to restart streams, a feature normally reserved for administrators.</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file-code"></i> modified_php_files/allow-reseller-restart-streams-and-mag-events/</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Bug Fixes -->
+        <section class="section" id="bugfixes">
+            <h2 class="section-title"><i class="fas fa-bug"></i> Bug Fixes</h2>
+
+            <div class="feature-card">
+                <span class="badge badge-fix">Fix</span>
+                <h4>GeoLite2 Update Fix</h4>
+                <p>The settings page was timing out because xtream-ui.com went offline. This fix uses an alternate source for GeoLite2 updates and reduces the check frequency to once per week.</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file-code"></i> modified_php_files/geolite2_check_fixed/admin/functions.php</li>
+                    <li><i class="fas fa-file-code"></i> modified_php_files/geolite2_check_fixed/admin/settings.php</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-fix">Fix</span>
+                <h4>Dashboard Stats Fix</h4>
+                <p>Adds missing database entries so dashboard statistics work properly. Run this SQL command:</p>
+                <div class="code-block">
+INSERT INTO xtream_iptvpro.dashboard_statistics (type, time, count) 
+VALUES('conns', UNIX_TIMESTAMP(), 0),('users', UNIX_TIMESTAMP(), 0);
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-fix">Fix</span>
+                <h4>Channel Order Fix</h4>
+                <p>MAG devices were showing "0" for channel numbers because they use the "number" column instead of "order" column. This fix syncs both columns.</p>
+                <div class="code-block">
+sed -i 's|`order` = ".intval($rSort)."|`order` = ".intval($rSort).", `number` = ".intval($rSort)."|g' /home/xtreamcodes/iptv_xtream_codes/admin/channel_order*.php
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-fix">Fix</span>
+                <h4>Uptime Button Visibility Fix</h4>
+                <p>The uptime button was invisible in light mode due to a CSS class issue in R22F. This reverts it to the working version.</p>
+                <div class="code-block">
+sed -i 's|btn btn-rounded btn-xs waves-effect waves-light|btn btn-outline-success btn-rounded btn-xs waves-effect waves-light|g' /home/xtreamcodes/iptv_xtream_codes/admin/table_search.php
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-fix">Fix</span>
+                <h4>Disable Image Resizing</h4>
+                <p>For slow servers that can't handle image processing, you can disable image resizing in table_search.php by replacing the resize code with an empty string.</p>
+            </div>
+        </section>
+
+        <!-- Backup System -->
+        <section class="section" id="backup">
+            <h2 class="section-title"><i class="fas fa-database"></i> Automated Backup System</h2>
+
+            <div class="feature-card">
+                <span class="badge badge-backup">Backup</span>
+                <h4>Cloud Backup with Rclone</h4>
+                <p>Automatically backs up your database to cloud storage (Google Drive, Dropbox, OneDrive, etc.) using rclone. Supports hourly, daily, or weekly schedules.</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file-code"></i> crons/auto_backup.php</li>
+                    <li><i class="fas fa-file-code"></i> crons/auto_backup_rclone.php</li>
+                </ul>
+                <p style="margin-top: 15px;"><strong>Requirements:</strong> Install rclone and configure with <code>rclone config</code></p>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-backup">Backup</span>
+                <h4>Email Backup</h4>
+                <p>Send database backups directly to your email address. Requires mutt and sendmail to be installed.</p>
+                <div class="code-block">
+sudo apt-get install mutt sendmail
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <span class="badge badge-backup">Backup</span>
+                <h4>Simple Backup</h4>
+                <p>A simpler backup script for local backups without cloud integration.</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file-code"></i> crons/auto_backup_simple.php</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Cron Tools -->
+        <section class="section" id="crons">
+            <h2 class="section-title"><i class="fas fa-clock"></i> Cron Tools</h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-tool">Tool</span>
+                        <h4>PID Monitor</h4>
+                        <p>Monitors running processes and can restart crashed services automatically.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> crons/pid_monitor.php</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-tool">Tool</span>
+                        <h4>Server Checker</h4>
+                        <p>Checks if load balancer servers are online and responding correctly.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> crons/server_checker.php</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Display Improvements -->
+        <section class="section" id="display">
+            <h2 class="section-title"><i class="fas fa-desktop"></i> Display Improvements</h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-display">Display</span>
+                        <h4>Date with Time</h4>
+                        <p>User edit page now shows full timestamps (date + time) instead of just dates for better tracking.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> modified_php_files/show-time-in-user.php/</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-display">Display</span>
+                        <h4>Country Flags</h4>
+                        <p>Includes 240+ country flag icons for displaying user locations in the admin panel.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-folder"></i> admin-modified/assets/images/countries/</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Tools -->
+        <section class="section" id="security">
+            <h2 class="section-title"><i class="fas fa-shield-alt"></i> Security & Admin Tools</h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-tool">Python</span>
+                        <h4>Hack Checker</h4>
+                        <p>Scans for suspicious files and potential security breaches in your installation.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> pytools/check_hacks.py</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-tool">Python</span>
+                        <h4>MySQL Restriction</h4>
+                        <p>Restricts MySQL access for improved database security.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> pytools/restrict_mysql.py</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-tool">Python</span>
+                        <h4>DB Password Regeneration</h4>
+                        <p>Regenerates database passwords for improved security.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> pytools/regenerate_db_passwd.py</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <span class="badge badge-tool">Python</span>
+                        <h4>Load Balancer Manager</h4>
+                        <p>Python script for managing load balancer configurations.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> pytools/balancer.py</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nginx Configs -->
+        <section class="section" id="nginx">
+            <h2 class="section-title"><i class="fas fa-server"></i> Nginx Configurations</h2>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h4>Standard Configuration</h4>
+                        <p>Optimized nginx.conf for Xtream UI installations.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> nginx/conf/nginx.conf</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h4>Load Balancer Config</h4>
+                        <p>Configuration for running Nginx as a load balancer.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> nginx/conf/nginx_for_lb.conf</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h4>ISP API Config</h4>
+                        <p>Configuration for ISP detection API endpoint.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> nginx/conf/nginx_isp_api.conf</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <h4>Reverse Proxy Config</h4>
+                        <p>Configuration for using Nginx as a reverse proxy.</p>
+                        <ul class="file-list">
+                            <li><i class="fas fa-file-code"></i> nginx/conf/nginx_reverse-proxy.conf</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-card" style="margin-top: 20px;">
+                <h4>Pre-compiled Nginx Binaries</h4>
+                <p>Includes pre-compiled Nginx binaries with additional modules:</p>
+                <ul class="file-list">
+                    <li><i class="fas fa-file"></i> nginx/sbin/nginx v1.18/ - OpenSSL, HTTP2, GeoIP2</li>
+                    <li><i class="fas fa-file"></i> nginx/sbin/nginx v1.20/ - Latest stable with modules</li>
+                    <li><i class="fas fa-file"></i> nginx_rtmp/sbin/nginx_rtmp - RTMP streaming module</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Installation Guide -->
+        <section class="section" id="installation">
+            <h2 class="section-title"><i class="fas fa-download"></i> Installation Guide</h2>
+
+            <div class="warning-box">
+                <h5><i class="fas fa-exclamation-triangle"></i> Important</h5>
+                <p>This repository contains modifications for an <strong>existing</strong> Xtream UI installation. You must have Xtream UI R22F already installed on your server before applying these patches.</p>
+            </div>
+
+            <h4 style="color: #fff; margin: 30px 0 20px;">General Installation Steps</h4>
+            <ol class="install-steps">
+                <li>SSH into your server as root</li>
+                <li>Navigate to <code>/home/xtreamcodes/iptv_xtream_codes/</code></li>
+                <li>Backup your existing files before making changes</li>
+                <li>Copy the modified files to their respective directories (admin/, crons/, etc.)</li>
+                <li>Set correct permissions: <code>chown -R xtreamcodes:xtreamcodes /home/xtreamcodes/</code></li>
+                <li>Restart the panel services</li>
+            </ol>
+
+            <h4 style="color: #fff; margin: 30px 0 20px;">Example: Installing Reseller MAG Events</h4>
+            <div class="code-block">
+# Backup existing files
+cp /home/xtreamcodes/iptv_xtream_codes/admin/api.php /home/xtreamcodes/iptv_xtream_codes/admin/api.php.bak
+
+# Copy modified files
+cp modified_php_files/allow-reseller-mag-events/*.php /home/xtreamcodes/iptv_xtream_codes/admin/
+
+# Set permissions
+chown xtreamcodes:xtreamcodes /home/xtreamcodes/iptv_xtream_codes/admin/*.php
+
+# Restart services
+/home/xtreamcodes/iptv_xtream_codes/start_services.sh
+            </div>
+        </section>
+
+        <footer>
+            <p>Xtream UI Tools - For educational and reference purposes</p>
+            <p style="margin-top: 10px;"><a href="/" style="color: #00d4ff;">Back to Home</a></p>
+        </footer>
+    </div>
+</body>
+</html>
